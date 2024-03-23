@@ -1,5 +1,6 @@
 package org.abhishek.controller;
 
+import org.abhishek.repository.ProductRepository;
 import org.abhishek.service.WelcomeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author  : Abhishek
  * @since   : 2024-02-15, Thursday
  **/
-@WebMvcTest
+@WebMvcTest(WelcomeController.class)
 class WelcomeControllerIntegrationTest {
 
     @Autowired
@@ -28,6 +29,10 @@ class WelcomeControllerIntegrationTest {
 
     @MockBean
     private WelcomeService welcomeService;
+
+    // this is not needed for this class but i have postConstruct method in the main class and when I run the mockMvc tests, i get error, hence i have included this for now.
+    @MockBean
+    private ProductRepository productRepository;
 
     @Test
     void shouldGetDefaultWelcomeMessage() throws Exception {

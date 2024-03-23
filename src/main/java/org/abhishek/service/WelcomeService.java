@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class WelcomeService {
     public String getWelcomeMessage(String name){
+        System.out.println("WelcomeService:getWelcomeMessage()");
         return String.format("Welcome %s!", name);
     }
 }

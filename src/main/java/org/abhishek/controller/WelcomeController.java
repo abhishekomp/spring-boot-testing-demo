@@ -1,9 +1,8 @@
 package org.abhishek.controller;
 
+import org.abhishek.domain.WelcomeClass;
 import org.abhishek.service.WelcomeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author  : Abhishek
@@ -21,5 +20,11 @@ public class WelcomeController {
     @GetMapping("/welcome")
     public String welcome(@RequestParam(defaultValue = "Stranger") String name){
         return welcomeService.getWelcomeMessage(name);
+    }
+
+    @PostMapping("/welcome/post")
+    public WelcomeClass welcomePost(@RequestBody WelcomeClass welcomeClass){
+        System.out.println("WelcomeController: welcomePost()");
+        return new WelcomeClass(welcomeClass.getName());
     }
 }
