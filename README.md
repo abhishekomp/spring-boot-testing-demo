@@ -15,3 +15,13 @@ This project demonstrates the unit, integration and acceptance testing of Spring
 - jsonPath usage to validate the json array, json object.
 - Uses ResponseEntity to send back the response in positive as well as in Exception scenario.
 
+## Start Spring Boot application
+(Worked on Spring Boot 3.3.3 in Sep 2024)  
+mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=test --server.port=9092 --myapp.name=Prod"  
+
+(Worked on Spring Boot 3.3.3 in Sep 2024)  
+Using java:  
+java -jar -Dspring.profiles.active=test ./target/spring-boot-testing-demo-0.0.1-SNAPSHOT.jar  
+java -jar ./target/spring-boot-testing-demo-0.0.1-SNAPSHOT.jar --spring.profiles.active=test  
+java -jar ./target/spring-boot-testing-demo-0.0.1-SNAPSHOT.jar --spring.profiles.active=test --server.port=8089  
+

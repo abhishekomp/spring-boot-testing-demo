@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct;
 import org.abhishek.model.Product;
 import org.abhishek.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -21,8 +22,12 @@ public class SpringBootTestingDemoApplication {
 	@Autowired
 	private ProductRepository productRepository;
 
+	@Value("${myapp.name}")
+	private String myAppName;
+
 	public static void main(String[] args) {
 		System.out.println(">>>>>>SpringBootTestingDemoApplication::main()");
+		//System.out.println(">>>>>>SpringBootTestingDemoApplication::main() with myAppName: " + myAppName);
 		SpringApplication.run(SpringBootTestingDemoApplication.class, args);
 	}
 
@@ -39,7 +44,7 @@ public class SpringBootTestingDemoApplication {
 
 	@PostConstruct
 	public void initializeProductDB(){
-		System.out.println(">>>>>>SpringBootTestingDemoApplication::initializeProductDB()");
+		System.out.println(">>>>>>SpringBootTestingDemoApplication::initializeProductDB() with appName: " + myAppName);
 		Product appleIPhone2024 = new Product(100001L, "APPLE_iPHONE_2024_256GB", 17999.0, 10, "WELCOME_SPRING", LocalDate.now(), LocalDate.now());
 		Product appleIPhone2023 = new Product(100002L, "APPLE_iPHONE_2023_256GB", 16999.0, 10, "WELCOME_SPRING", LocalDate.now().plusDays(1), LocalDate.now().plusDays(1));
 		Product appleIPhone2022 = new Product(100003L, "APPLE_iPHONE_2022_256GB", 15999.0, 10, "WELCOME_AUTUMN", LocalDate.now(), LocalDate.now());
